@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="HelpButton" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DefaultMenuitem" xml:space="preserve">
+    <value>Default:</value>
+  </data>
+  <data name="DeleteAllButton" xml:space="preserve">
+    <value>Delete All</value>
+  </data>
+  <data name="DeleteSourcePatternCheckbox" xml:space="preserve">
+    <value>Delete source pattern?</value>
+  </data>
+  <data name="DeleteSourceStyleCheckbox" xml:space="preserve">
+    <value>Delete source style?</value>
+  </data>
+  <data name="FilterDotDotDot" xml:space="preserve">
+    <value>Filter...</value>
+  </data>
+  <data name="ListViewsButton" xml:space="preserve">
+    <value>List Views</value>
+  </data>
+  <data name="LSC_Default2DeleteMenuitem" xml:space="preserve">
+    <value>Set default to Delete Lines</value>
+  </data>
+  <data name="LSC_DeleteLines" xml:space="preserve">
+    <value>Delete Lines</value>
+  </data>
+  <data name="LSC_DetailLines" xml:space="preserve">
+    <value>Detail Lines</value>
+  </data>
+  <data name="LSC_ModelLines" xml:space="preserve">
+    <value>Model Lines</value>
+  </data>
+  <data name="LSC_Title_MainWindow" xml:space="preserve">
+    <value>Line Style Cleaner</value>
+  </data>
+  <data name="Title_SingleWindow" xml:space="preserve">
+    <value>Select new style for</value>
+  </data>
+  <data name="PurgeUnusedButton" xml:space="preserve">
+    <value>Purge Unused</value>
+  </data>
+  <data name="ResetPatternMenuitem" xml:space="preserve">
+    <value>Reset pattern</value>
+  </data>
+  <data name="ResetStyleMenuitem" xml:space="preserve">
+    <value>Reset style</value>
+  </data>
+  <data name="SetDefaultPatternMenuitem" xml:space="preserve">
+    <value>Set as default pattern</value>
+  </data>
+  <data name="SetDefaultStyleMenuitem" xml:space="preserve">
+    <value>Set as default style</value>
+  </data>
+  <data name="TXT_Colour" xml:space="preserve">
+    <value>Colour</value>
+  </data>
+  <data name="TXT_NewStyle" xml:space="preserve">
+    <value>New Style</value>
+  </data>
+  <data name="TXT_SelectedStyle" xml:space="preserve">
+    <value>Selected Style</value>
+  </data>
+  <data name="TXT_Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="HelpFile" xml:space="preserve">
+    <value>ProjectSweeper.chm</value>
+  </data>
+  <data name="DeleteCheckboxTip" xml:space="preserve">
+    <value>Check to delete this style</value>
+    <comment>Tooltip</comment>
+  </data>
+  <data name="DIA001_MainCont" xml:space="preserve">
+    <value>The style {0} is already being converted to {1}. This could lead to unpredictable results.</value>
+    <comment>Revit TaskDialog #001 main content</comment>
+  </data>
+  <data name="DIA001_MainInst" xml:space="preserve">
+    <value>{0} is being converted to this style.</value>
+    <comment>Revit TaskDialog #001 main instruction</comment>
+  </data>
+  <data name="DIA002_MainCont" xml:space="preserve">
+    <value>Change the default style to another style before trying to delete all the elements using this style.</value>
+    <comment>Revit TaskDialog #002 main content</comment>
+  </data>
+  <data name="DIA002_MainInst" xml:space="preserve">
+    <value>{0} is the default style.</value>
+    <comment>Revit TaskDialog #002 main instruction</comment>
+  </data>
+  <data name="DIA003_MainCont" xml:space="preserve">
+    <value>Some styles were set to be converted to {0}. These styles have been reset.</value>
+    <comment>Revit TaskDialog #003 main content</comment>
+  </data>
+  <data name="LSC_IconTip" xml:space="preserve">
+    <value>Cleans redundant line styles from a project file.</value>
+    <comment>Ribbon icon tooltip</comment>
+  </data>
+  <data name="LSC_StyleCombobox" xml:space="preserve">
+    <value>Select line style to convert lines to or 'Delete Lines' to remove lines from project</value>
+    <comment>Tooltip</comment>
+  </data>
+  <data name="TXT_Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="ErrorDialog_Command1" xml:space="preserve">
+    <value>Send bug report.</value>
+  </data>
+  <data name="ErrorDialog_MainCont" xml:space="preserve">
+    <value>Something unexpected has happened and the command cannot complete. More information can be found below.</value>
+    <comment>OLD VALUE = Please use the link below to send a bug report to the developer. You will be able to see the bug report before you send it.</comment>
+  </data>
+  <data name="ErrorDialog_MainInst" xml:space="preserve">
+    <value> has encountered an error and cannot complete.</value>
+    <comment>this has a space at the front</comment>
+  </data>
+  <data name="ErrorDialog_Title" xml:space="preserve">
+    <value>Unexpected Error</value>
+  </data>
+  <data name="DIA004_Txt" xml:space="preserve">
+    <value>Not all the selected elements where valid. Starting in All mode instead.</value>
+    <comment>see startMainMode()</comment>
+  </data>
+  <data name="LSC_DIA005_Txt" xml:space="preserve">
+    <value>Selected element was not a line.</value>
+    <comment>see startSingleMode()</comment>
+  </data>
+  <data name="RSLT_Converted" xml:space="preserve">
+    <value>Converted {0} style(s).</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="RSLT_Found" xml:space="preserve">
+    <value>Found {0} style(s).</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="RSLT_Queue" xml:space="preserve">
+    <value>Style queued to be removed.</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="RSLT_Removed" xml:space="preserve">
+    <value>Removed {0} style(s).</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="RSLT_SingleMode" xml:space="preserve">
+    <value>The style {0} was removed from the project.</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="RSLT_Summary" xml:space="preserve">
+    <value>Summary Report</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="RSLTWIN_Title" xml:space="preserve">
+    <value>Results for </value>
+    <comment>Includes space at end</comment>
+  </data>
+  <data name="TXT_BadSelection" xml:space="preserve">
+    <value>Invalid selection</value>
+  </data>
+  <data name="DIA006_Command1" xml:space="preserve">
+    <value>Ungroup group: {0} and change the element.</value>
+  </data>
+  <data name="DIA006_Command2" xml:space="preserve">
+    <value>Leave the group unchanged. (The style will not be deleted).</value>
+  </data>
+  <data name="DIA006_MainInst" xml:space="preserve">
+    <value>An element using the {0} style was found in the group {1}</value>
+  </data>
+  <data name="DIA006_Title" xml:space="preserve">
+    <value>Found group</value>
+  </data>
+  <data name="RSLT_NotUngrouped" xml:space="preserve">
+    <value>Group {0} was not ungrouped. {1} will not be removed.</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="RSLT_Ungrouped" xml:space="preserve">
+    <value>Ungrouping {0} group</value>
+    <comment>Result output</comment>
+  </data>
+  <data name="LSC_DIA007_Command1" xml:space="preserve">
+    <value>Convert line to Thin Line style so style {0} can be removed.</value>
+  </data>
+  <data name="LSC_DIA007_Command2" xml:space="preserve">
+    <value>Do not remove style {0} and keep line as is.</value>
+  </data>
+  <data name="LSC_DIA007_MainCont" xml:space="preserve">
+    <value>Deleting this line will leave the filled\masking region open and therefore invalid. What would you like to do?</value>
+  </data>
+  <data name="LSC_DIA007_MainInst" xml:space="preserve">
+    <value>A line using the {0} style was found in a filled\masking region.</value>
+  </data>
+  <data name="LSC_DIA007_Title" xml:space="preserve">
+    <value>Region found</value>
+  </data>
+  <data name="LSC_DIA008_MainInst" xml:space="preserve">
+    <value>Cannot modify detail group "{0}" because it is attached to a model group. Line style "{1}" will not be deleted.</value>
+  </data>
+  <data name="LSC_DIA008_Title" xml:space="preserve">
+    <value>Unsupported detail group</value>
+  </data>
+  <data name="LSC_RSLT_Convert2Thin" xml:space="preserve">
+    <value>Converted {0} lines to Thin Lines to maintain filled\masking regions</value>
+  </data>
+  <data name="LSC_RSLT_ConvertedLines" xml:space="preserve">
+    <value>Converted {0} lines to "{1}"</value>
+  </data>
+  <data name="LSC_RSLT_DeletedLines" xml:space="preserve">
+    <value>Deleted {0} lines</value>
+  </data>
+  <data name="LSC_RSLT_NoDelete" xml:space="preserve">
+    <value>{0} will not be deleted to maintain filled\masking regions.</value>
+  </data>
+  <data name="LPC_2016Warning" xml:space="preserve">
+    <value>Due to limitations in Revit, this app cannot determine which line styles are using which line patterns. Deleting a line pattern that is currently being used by a line style will result in that line style switching to the Solid line pattern.</value>
+  </data>
+  <data name="LPC_Title_MainWindow" xml:space="preserve">
+    <value>Line Pattern Cleaner</value>
+  </data>
+  <data name="LPC_2016Removed" xml:space="preserve">
+    <value>Removed {0} line pattern(s).</value>
+  </data>
+  <data name="LPC_IconTip" xml:space="preserve">
+    <value>Cleans redundant line patterns from a project file.</value>
+  </data>
+  <data name="TSC_Default2DeleteMenuitem" xml:space="preserve">
+    <value>Set default to Delete Notes</value>
+  </data>
+  <data name="TSC_GraphicsTxt" xml:space="preserve">
+    <value>Graphics</value>
+  </data>
+  <data name="TSC_StyleCombobox" xml:space="preserve">
+    <value>Select style to convert to or 'Delete Notes' to remove notes from project</value>
+  </data>
+  <data name="TSC_TextTxt" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="TSC_Title_MainWindow" xml:space="preserve">
+    <value>Text Style Cleaner</value>
+  </data>
+  <data name="TSC_DeleteNotes" xml:space="preserve">
+    <value>Delete Notes</value>
+  </data>
+  <data name="TSC_DIA001_MainCont" xml:space="preserve">
+    <value>There is no text style to convert another text style to and Revit project files must have at least one text style at all times.</value>
+  </data>
+  <data name="TSC_DIA001_MainInst" xml:space="preserve">
+    <value>There is only one text style in this project file.</value>
+  </data>
+  <data name="TSC_DIA002_MainCont" xml:space="preserve">
+    <value>The text style "{0}" will not be deleted.</value>
+  </data>
+  <data name="TSC_DIA002_MainInst" xml:space="preserve">
+    <value>Removing all text styles from a Revit project is not allowed.</value>
+  </data>
+  <data name="RSLT_RemoveQueue" xml:space="preserve">
+    <value>Style {0} removed from queue</value>
+  </data>
+  <data name="TXT_TimesUsed" xml:space="preserve">
+    <value>Times Used</value>
+  </data>
+  <data name="TSC_DIA003_Txt" xml:space="preserve">
+    <value>Selected element was not a note.</value>
+  </data>
+  <data name="TSC_IconTip" xml:space="preserve">
+    <value>Cleans redundant text styles from a project file.</value>
+  </data>
+  <data name="TSC_RSLT_ConvertedNotes" xml:space="preserve">
+    <value>Converted {0} notes to "{1}"</value>
+  </data>
+  <data name="TSC_RSLT_DeletedNotes" xml:space="preserve">
+    <value>Deleted {0} note(s)</value>
+  </data>
+  <data name="FRTC_Title_MainWindow" xml:space="preserve">
+    <value>Fill Region Type Cleaner</value>
+  </data>
+  <data name="FRTC_Default2DeleteMenuitem" xml:space="preserve">
+    <value>Set default to Delete Regions</value>
+  </data>
+  <data name="FRTC_StyleCombobox" xml:space="preserve">
+    <value>Select style to convert to or 'Delete Regions' to remove regions from project</value>
+  </data>
+  <data name="FRTC_DeleteRegion" xml:space="preserve">
+    <value>Delete Regions</value>
+  </data>
+  <data name="FRTC_DIA001_MainCont" xml:space="preserve">
+    <value>There is no fill region type to convert another fill region type to and Revit project files must have at least one fill region type at all times.</value>
+  </data>
+  <data name="FRTC_DIA001_MainInst" xml:space="preserve">
+    <value>There is only one fill region type in this project file.</value>
+  </data>
+  <data name="FRTC_DIA002_MainCont" xml:space="preserve">
+    <value>The filled region type "{0}" will not be deleted.</value>
+  </data>
+  <data name="FRTC_DIA002_MainInst" xml:space="preserve">
+    <value>Removing all filled region types from a Revit project is not allowed.</value>
+  </data>
+  <data name="FRTC_DIA003_Txt" xml:space="preserve">
+    <value>Selected element was not a region.</value>
+  </data>
+  <data name="FRTC_IconTip" xml:space="preserve">
+    <value>Cleans redundant fill region types from a project file.</value>
+  </data>
+  <data name="FRTC_RSLT_ConvertedRegionTypes" xml:space="preserve">
+    <value>Converted {0} filled regions to "{1}"</value>
+  </data>
+  <data name="FRTC_RSLT_DeletedRegionTypes" xml:space="preserve">
+    <value>Deleted {0} filled region types</value>
+  </data>
+  <data name="Drafting" xml:space="preserve">
+    <value>Drafting</value>
+    <comment>fill pattern types</comment>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+    <comment>fill pattern types</comment>
+  </data>
+  <data name="FPC_ComponentsUsing" xml:space="preserve">
+    <value>Components using:</value>
+  </data>
+  <data name="FPC_Default2NoneSolidMenuitem" xml:space="preserve">
+    <value>Set default to None</value>
+  </data>
+  <data name="FPC_FamiliesUsing" xml:space="preserve">
+    <value>Families using:</value>
+  </data>
+  <data name="FPC_LineAngle" xml:space="preserve">
+    <value>Line Angle:</value>
+  </data>
+  <data name="FPC_LineSpacing1" xml:space="preserve">
+    <value>Line Spacing 1:</value>
+  </data>
+  <data name="FPC_LineSpacing2" xml:space="preserve">
+    <value>Line Spacing 2:</value>
+  </data>
+  <data name="FPC_MaterialsUsing" xml:space="preserve">
+    <value>Materials using:</value>
+  </data>
+  <data name="FPC_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="FPC_PatternType" xml:space="preserve">
+    <value>Pattern Type:</value>
+  </data>
+  <data name="FPC_RegionsUsing" xml:space="preserve">
+    <value>Region Types using:</value>
+  </data>
+  <data name="FPC_StyleCombobox" xml:space="preserve">
+    <value>Select a style to convert existing assets to.</value>
+  </data>
+  <data name="FPC_TargetType" xml:space="preserve">
+    <value>Target Type:</value>
+  </data>
+  <data name="FPC_Title_MainWindow" xml:space="preserve">
+    <value>Fill Pattern Cleaner</value>
+  </data>
+  <data name="FRTC_NoFPName" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ListUsersButton" xml:space="preserve">
+    <value>List Users</value>
+  </data>
+  <data name="Title_SingleWindow_Pattern" xml:space="preserve">
+    <value>Select new pattern for</value>
+  </data>
+  <data name="FPC_DIA001_NoPattern" xml:space="preserve">
+    <value>The items you selected had no fill patterns that could be worked on. All the patterns will be shown for editing.</value>
+  </data>
+  <data name="FPC_IconTip" xml:space="preserve">
+    <value>Cleans redundant fill patterns from a project file.</value>
+  </data>
+  <data name="FPC_Progress" xml:space="preserve">
+    <value>Scanned family : </value>
+  </data>
+  <data name="FPC_RSLT_ChangedFamily" xml:space="preserve">
+    <value>Changed family {0} : {1}.</value>
+  </data>
+  <data name="FPC_RSLT_ConvCourseFP" xml:space="preserve">
+    <value>Converted "Course Scale Fill Pattern" on {0} to {1} pattern.</value>
+  </data>
+  <data name="FPC_RSLT_FillReg_Conv" xml:space="preserve">
+    <value>Set pattern on filled region type {0} to {1}.</value>
+  </data>
+  <data name="FPC_RSLT_FillReg_Solid" xml:space="preserve">
+    <value>Set pattern on filled region type {0} to Solid.</value>
+  </data>
+  <data name="FPC_RSLT_RegPattSolid" xml:space="preserve">
+    <value>Set pattern on filled region type {0} to Solid.</value>
+  </data>
+  <data name="FPC_RSLT_RemCourseFP" xml:space="preserve">
+    <value>Removed "Course Scale Fill Pattern" on {0}.</value>
+  </data>
+  <data name="FPC_RSLT_SetPatt" xml:space="preserve">
+    <value>Set pattern on filled region type {0} to {1}.</value>
+  </data>
+  <data name="FPC_TRANS_ConvertFamily" xml:space="preserve">
+    <value>Convert family</value>
+  </data>
+  <data name="RSLT_Queue_Pattern" xml:space="preserve">
+    <value>Pattern queued to be removed.</value>
+  </data>
+  <data name="Complex" xml:space="preserve">
+    <value>Complex</value>
+    <comment>fill pattern type</comment>
+  </data>
+  <data name="Simple_Crosshatch" xml:space="preserve">
+    <value>Simple Crosshatch</value>
+    <comment>fill pattern type</comment>
+  </data>
+  <data name="Simple_Parallel_Lines" xml:space="preserve">
+    <value>Simple Parallel Lines</value>
+    <comment>fill pattern type</comment>
+  </data>
+  <data name="PROG_Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="ABOUT_IconTip" xml:space="preserve">
+    <value>Information about software version and updates</value>
+  </data>
+  <data name="ABOUT_Title" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="EULA_IconTip" xml:space="preserve">
+    <value>End User License Agreement</value>
+  </data>
+  <data name="EULA_Title" xml:space="preserve">
+    <value>EULA</value>
+  </data>
+  <data name="HELP_IconTip" xml:space="preserve">
+    <value>Help for using the Project Sweeper tools.</value>
+  </data>
+  <data name="LIC_DIA001_Command1" xml:space="preserve">
+    <value>Yes, I am connected to the internet. Let me submit a bug report.</value>
+  </data>
+  <data name="LIC_DIA001_Command2" xml:space="preserve">
+    <value>No, I am NOT connected to the internet. Let me connect and try again later.</value>
+  </data>
+  <data name="LIC_DIA001_MainCont" xml:space="preserve">
+    <value>The license server could not be reached at this time. Are you connected to the internet?</value>
+  </data>
+  <data name="LIC_DIA001_MainInst" xml:space="preserve">
+    <value>Unable to retrieve a license from the server.</value>
+  </data>
+  <data name="LIC_DIA001_TItle" xml:space="preserve">
+    <value>Licensing error</value>
+  </data>
+  <data name="LIC_DIA002_MainCont" xml:space="preserve">
+    <value>Please contact your IT department to ask for access.</value>
+  </data>
+  <data name="LIC_DIA002_MainInst" xml:space="preserve">
+    <value>You are not authorized to use this app.</value>
+  </data>
+  <data name="LIC_DIA002_Title" xml:space="preserve">
+    <value>Not authorized</value>
+  </data>
+  <data name="LIC_DIA003_MainCont" xml:space="preserve">
+    <value>This application must check if you are authorized to use it. Login to Autodesk 360 using the same account you used to purchase this app. An internet connection is required.</value>
+  </data>
+  <data name="LIC_DIA003_MainInst" xml:space="preserve">
+    <value>Please login to Autodesk 360 first.</value>
+  </data>
+  <data name="LIC_DIA003_Title" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LIC_DIA004_MainCont" xml:space="preserve">
+    <value>Make sure you login into Autodesk 360 with the same account you used to buy this app. If the app was purchased under a company account, contact your IT department to allow you access.</value>
+  </data>
+  <data name="ListUsers_Title1" xml:space="preserve">
+    <value>Schedules\Templates using {0}</value>
+  </data>
+  <data name="ListUsers_Title2" xml:space="preserve">
+    <value>Assets using {0}</value>
+  </data>
+  <data name="ListViews_DIA001_MainInst" xml:space="preserve">
+    <value>View names starting with '&gt;' are schedules or view templates and cannot be viewed in the preview window.</value>
+  </data>
+  <data name="ListViews_DIA001_Title" xml:space="preserve">
+    <value>Schedule view</value>
+  </data>
+  <data name="ListViews_PromptText" xml:space="preserve">
+    <value>Double click a view on the list to display it here.</value>
+  </data>
+  <data name="ListViews_Title" xml:space="preserve">
+    <value>Views using {0}</value>
+  </data>
+  <data name="ABOUT_Desc_Txt1" xml:space="preserve">
+    <value>This produce is no longer being updated.</value>
+    <comment>OLD VALUE = Checking for updates....</comment>
+  </data>
+  <data name="ABOUT_Desc_Txt2" xml:space="preserve">
+    <value>This software is licensed to</value>
+  </data>
+  <data name="ABOUT_Desc_Txt3" xml:space="preserve">
+    <value>This software is not licensed.</value>
+  </data>
+  <data name="ABOUT_RSLT_Txt1" xml:space="preserve">
+    <value>Could not find this software listed in updates.</value>
+  </data>
+  <data name="ABOUT_RSLT_Txt2" xml:space="preserve">
+    <value>A newer version of {0} is available. Version {1} is available at www.pkhlineworks.ca.</value>
+  </data>
+  <data name="ABOUT_RSLT_Txt3" xml:space="preserve">
+    <value>Your product is up to date.</value>
+  </data>
+  <data name="ABOUT_RSLT_Txt4" xml:space="preserve">
+    <value>Could not contact server to check for updates.</value>
+  </data>
+  <data name="LSC_RSLT_FoundLines" xml:space="preserve">
+    <value>Found {0} lines using the {1} style.</value>
+  </data>
+  <data name="RSLTWIN_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TXT_Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="FPC_Title_Ribbon" xml:space="preserve">
+    <value>Fill Pattern
+Cleaner</value>
+  </data>
+  <data name="FRTC_Title_Ribbon" xml:space="preserve">
+    <value>Fill Region
+Type Cleaner</value>
+  </data>
+  <data name="LPC_Title_Ribbon" xml:space="preserve">
+    <value>Line Pattern
+Cleaner</value>
+  </data>
+  <data name="LSC_Title_Ribbon" xml:space="preserve">
+    <value>Line Style
+Cleaner</value>
+  </data>
+  <data name="TSC_Title_Ribbon" xml:space="preserve">
+    <value>Text Style
+Cleaner</value>
+  </data>
+  <data name="TSC_RSLT_ConvSchedule" xml:space="preserve">
+    <value>Converted style on schedule: {0}</value>
+  </data>
+  <data name="TSC_RSLT_ConvSched2Default" xml:space="preserve">
+    <value>Style on schedule {0} willl be set to system default</value>
+  </data>
+  <data name="LPC_Default2SolidMenuitem" xml:space="preserve">
+    <value>Set default to Solid</value>
+  </data>
+  <data name="LPC_DIA001_MainInst" xml:space="preserve">
+    <value>The line pattern of the selected element was "Solid" and cannot be changed or the selected element was not a detail or model line. Starting in multi-mode.</value>
+  </data>
+  <data name="LPC_DIA001_TItle" xml:space="preserve">
+    <value>No patterns found</value>
+  </data>
+  <data name="LPC_LineStylesUsing" xml:space="preserve">
+    <value>Line styles using:</value>
+  </data>
+  <data name="LPC_Pattern" xml:space="preserve">
+    <value>Pattern:</value>
+  </data>
+  <data name="LPC_RSLT_ConvertedStyle" xml:space="preserve">
+    <value>Converted the following style(s) to pattern : {0}</value>
+  </data>
+  <data name="LPC_Solid" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="LPC_StyleCombobox" xml:space="preserve">
+    <value>Select a style to convert existing assets to.</value>
+  </data>
+  <data name="TSCC_Title_Window" xml:space="preserve">
+    <value>Text Style Comparer</value>
+  </data>
+  <data name="TSC_CompareButton" xml:space="preserve">
+    <value>Compare Styles</value>
+  </data>
+  <data name="TSC_Font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="TSC_Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="TSC_Bg" xml:space="preserve">
+    <value>Bg</value>
+  </data>
+  <data name="TSC_Box" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="TSC_Used" xml:space="preserve">
+    <value>Used</value>
+  </data>
+  <data name="LSC_Pattern" xml:space="preserve">
+    <value>Pattern</value>
+  </data>
+  <data name="LUW_Asset" xml:space="preserve">
+    <value>Schedule\Template</value>
+  </data>
+  <data name="LUW_Title_Txt" xml:space="preserve">
+    <value>Assets using {0}</value>
+  </data>
+  <data name="TXT_DblClickView" xml:space="preserve">
+    <value>Double click a view on the list to display it here.</value>
+  </data>
+  <data name="TXT_Pattern" xml:space="preserve">
+    <value>FP</value>
+    <comment>Fill Pattern (see FRTC single window)</comment>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="Projection" xml:space="preserve">
+    <value>Projection</value>
+  </data>
+  <data name="FRTC_Tab_Bg" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="FRTC_Tab_Fg" xml:space="preserve">
+    <value>Fore</value>
+  </data>
+  <data name="FPC_DIA004_MainCont" xml:space="preserve">
+    <value>Could not set background pattern of filled region type {0} to pattern {1}.</value>
+  </data>
+  <data name="FPC_DIA004_MainInst" xml:space="preserve">
+    <value>This pattern is not a drafting pattern. The filled region type will remain unchanged and the fill pattern {0} will not be removed.</value>
+  </data>
+  <data name="FPC_RSLT_ConvCutBgPatt" xml:space="preserve">
+    <value>Converted cut background pattern on material {0} to {1} pattern.</value>
+  </data>
+  <data name="FPC_RSLT_ConvCutFgPatt" xml:space="preserve">
+    <value>Converted cut foreground pattern on material {0} to {1} pattern.</value>
+  </data>
+  <data name="FPC_RSLT_ConvSurfBgPatt" xml:space="preserve">
+    <value>Converted surface background pattern on material {0} to {1} pattern.</value>
+  </data>
+  <data name="FPC_RSLT_ConvSurfFgPatt" xml:space="preserve">
+    <value>Converted surface foreground pattern on material {0} to {1} pattern.</value>
+  </data>
+  <data name="FPC_RSLT_FillRegBg_Conv" xml:space="preserve">
+    <value>Set background pattern on filled region type {0} to {1}.</value>
+  </data>
+  <data name="FPC_RSLT_FillRegBg_Rem" xml:space="preserve">
+    <value>Removed background pattern on filled region type {0}.</value>
+  </data>
+  <data name="FPC_RSLT_FillRegFg_Conv" xml:space="preserve">
+    <value>Set foreground pattern on filled region type {0} to {1}.</value>
+  </data>
+  <data name="FPC_RSLT_FillRegFg_Rem" xml:space="preserve">
+    <value>Removed foreground pattern on filled region type {0}.</value>
+  </data>
+  <data name="FPC_RSLT_FrtcFailed" xml:space="preserve">
+    <value>Could not set background of filled region type {0} to pattern {1}. This pattern is not a drafting pattern.</value>
+  </data>
+  <data name="FPC_RSLT_RemCutBgPatt" xml:space="preserve">
+    <value>Removed cut background pattern on material {0}.</value>
+  </data>
+  <data name="FPC_RSLT_RemCutFgPatt" xml:space="preserve">
+    <value>Removed cut foreground pattern on material {0}.</value>
+  </data>
+  <data name="FPC_RSLT_RemSurfBgPatt" xml:space="preserve">
+    <value>Removed surface background pattern on material {0}.</value>
+  </data>
+  <data name="FPC_RSLT_RemSurfFgPatt" xml:space="preserve">
+    <value>Removed surface foreground pattern on material {0}.</value>
+  </data>
+  <data name="LIC_MSG_MaxLic" xml:space="preserve">
+    <value>The number of purchased licenses has already been used up. More licenses will need to be purchased before Project Sweeper can be installed on more computers.</value>
+  </data>
+  <data name="LIC_MSG_NoSrvr" xml:space="preserve">
+    <value>The license server could not be contacted.</value>
+  </data>
+  <data name="LIC_MSG_NotFound" xml:space="preserve">
+    <value>No license found.</value>
+  </data>
+  <data name="LIC_MSG_NoUserDat" xml:space="preserve">
+    <value>Unable to find user.dat file.</value>
+  </data>
+  <data name="LIC_MSG_Revoked" xml:space="preserve">
+    <value>This license has been revoked.</value>
+  </data>
+  <data name="LoadButton" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="ResetAllButton" xml:space="preserve">
+    <value>Reset All</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TEMPLATEWIN_Title_Templates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="FPC_LOAD_RSLTWIN_Title" xml:space="preserve">
+    <value>Template results</value>
+  </data>
+  <data name="FPC_LOAD_RSLT_AlreadyConv" xml:space="preserve">
+    <value>Pattern "{0}" is already being convert to "{1}". Skipping it.</value>
+  </data>
+  <data name="FPC_LOAD_RSLT_Change" xml:space="preserve">
+    <value>Set pattern "{0}" to be changed to "{1}".</value>
+  </data>
+  <data name="FPC_LOAD_RSLT_ChangeAndDel" xml:space="preserve">
+    <value>Set pattern "{0}" to be changed to "{1}" and then delete the pattern.</value>
+  </data>
+  <data name="FPC_LOAD_RSLT_NoPatt" xml:space="preserve">
+    <value>Could not find pattern "{0}". Skipping it.</value>
+  </data>
+  <data name="FPC_LOAD_RSLT_NoPatt2Conv" xml:space="preserve">
+    <value>Could not find pattern "{0}" to convert to. Skipping it.</value>
+  </data>
+  <data name="FPC_LOAD_RSLT_Summary" xml:space="preserve">
+    <value>Template had {0} style items. {1} of them were successfully applied.</value>
+  </data>
+  <data name="DIA007_MainCont" xml:space="preserve">
+    <value>Please choose a name for the new template.</value>
+  </data>
+  <data name="DIA007_MainInstr" xml:space="preserve">
+    <value>Template name required.</value>
+    <comment>Template window input dialog</comment>
+  </data>
+  <data name="DIA008_MsgBxCapt" xml:space="preserve">
+    <value>Confirm overwrite</value>
+  </data>
+  <data name="DIA008_MsgBxTxt" xml:space="preserve">
+    <value>Are you sure you want to overwrite this template?</value>
+  </data>
+  <data name="TEMPLATEWIN_IgnoreCase" xml:space="preserve">
+    <value>Ignore case</value>
+  </data>
+  <data name="TEMPLATEWIN_NewTemplateComment" xml:space="preserve">
+    <value>Select this template to create a new saved template. You will be prompted to name it. Or select an existing template to overwrite it. Replace this comment with something meaningful to you.</value>
+  </data>
+  <data name="TEMPLATEWIN_NewTemplatename" xml:space="preserve">
+    <value>&lt;Create New Template&gt;</value>
+  </data>
+  <data name="TEMPLATEWIN_SaveTemplates" xml:space="preserve">
+    <value>Saved Templates</value>
+  </data>
+  <data name="TEMPLATEWIN_StyleItems" xml:space="preserve">
+    <value>Style Items:</value>
+  </data>
+  <data name="TEMPLATEWIN_TemplatesComment" xml:space="preserve">
+    <value>Template Comment</value>
+  </data>
+  <data name="FRTC_LOAD_RSLT_AlreadyConv" xml:space="preserve">
+    <value>Type "{0}" is already being converted to "{1}". Skipping it.</value>
+  </data>
+  <data name="FRTC_LOAD_RSLT_Change" xml:space="preserve">
+    <value>Set type "{0}" to be changed to "{1}".</value>
+  </data>
+  <data name="FRTC_LOAD_RSLT_ChangeAndDel" xml:space="preserve">
+    <value>Set type "{0}" to be changed to "{1}" and then delete the type.</value>
+  </data>
+  <data name="FRTC_LOAD_RSLT_NoType" xml:space="preserve">
+    <value>Could not find type "{0}". Skipping it.</value>
+  </data>
+  <data name="FRTC_LOAD_RSLT_NoType2Conv" xml:space="preserve">
+    <value>Could not find type "{0}" to convert to. Skipping it.</value>
+  </data>
+  <data name="DIA009_MainInstr" xml:space="preserve">
+    <value>You have selected to delete a saved template. This cannot be undone. Are you sure you want to continue?</value>
+  </data>
+  <data name="DIA009_Title" xml:space="preserve">
+    <value>Confirm delete</value>
+  </data>
+  <data name="FRTC_DeletedXRegions" xml:space="preserve">
+    <value>Deleted {0} region(s).</value>
+  </data>
+  <data name="FRTC_DIA004_MainInst" xml:space="preserve">
+    <value>The items you selected were not filled regions. All the styles will be shown for editing.</value>
+  </data>
+  <data name="FRTC_DIA004_Title" xml:space="preserve">
+    <value>No regions found</value>
+  </data>
+  <data name="LSC_DIA009_MainInstr" xml:space="preserve">
+    <value>The selected element was not a detail or model line. Starting in multi-mode.</value>
+  </data>
+  <data name="LSC_DIA009_Title" xml:space="preserve">
+    <value>No styles found</value>
+  </data>
+  <data name="RSLT_Deleted" xml:space="preserve">
+    <value>Deleted {0} style(s).</value>
+  </data>
+</root>

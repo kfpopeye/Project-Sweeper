@@ -1,0 +1,42 @@
+﻿<Window x:Class="PKHL.ProjectSweeper.ListViewsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PKHL.ProjectSweeper"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
+        lex:ResxLocalizationProvider.DefaultDictionary="Language"
+        mc:Ignorable="d"
+        Title="ListViewsWindow" Height="600" Width="800" WindowStyle="ToolWindow" 
+        Topmost="True" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" Closed="Window_Closed">
+    <Window.Resources>
+                    <CollectionViewSource x:Key="theDataView" Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=TheData}" />
+    </Window.Resources>
+    <DockPanel LastChildFill="True" Margin="0">
+        <Grid DockPanel.Dock="Left">
+            <ListView Grid.Row="1" x:Name="mainListView" Margin="0" MinWidth="100" MinHeight="200" Width="Auto" 
+                      ItemsSource="{Binding Source={StaticResource theDataView}}" SelectionMode="Single" SelectedIndex="0">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <EventSetter Event="MouseDoubleClick" Handler="HandleDoubleClick" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        </Grid>
+        <Grid Name="_PlaceholderPanel">
+            <TextBlock TextWrapping="Wrap" FontSize="24" Text="{lex:Loc Key=TXT_DblClickView}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"/>
+        </Grid>
+    </DockPanel>
+</Window>

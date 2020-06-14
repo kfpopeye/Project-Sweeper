@@ -1,0 +1,113 @@
+﻿<Window x:Class="PKHL.ProjectSweeper.TemplateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:local="clr-namespace:PKHL.ProjectSweeper"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="fr"
+        lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
+        lex:ResxLocalizationProvider.DefaultDictionary="Language"
+        mc:Ignorable="d"
+        Title="TemplateWindow" Height="450" Width="600" WindowStartupLocation="CenterOwner" 
+        ResizeMode="CanResizeWithGrip" WindowStyle="ToolWindow" Loaded="Window_Loaded">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <local:PSTemplates x:Key="TemplateClass" />
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <CollectionViewSource x:Key="appViewSource" Source="{Binding App, Source={StaticResource TemplateClass}}">
+                        <CollectionViewSource.SortDescriptions>
+                            <scm:SortDescription
+								PropertyName="TName"
+								Direction="Ascending" />
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <local:TNameToVisibilityConverter x:Key="TN2V"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Template list -->
+        <DockPanel Grid.Column="0" Grid.Row="0" LastChildFill="True">
+            <TextBlock Margin="2,0,0,0" FontSize="12" DockPanel.Dock="Top" Text="{lex:Loc Key=TEMPLATEWIN_SaveTemplates}"/>
+            <Border Margin="2" BorderThickness="2">
+                <ListBox x:Name="TemplateList" SelectionMode="Single"
+                    ItemsSource="{Binding App_Savedtemplate, Source={StaticResource appViewSource}}" SelectionChanged="TemplateList_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="X" x:Name="deleteTemplateButton" Foreground="#FFFF0808" FontWeight="Bold" 
+                                        Click="deleteTemplateButton_Click" Margin="2,0"
+                                        Visibility="{Binding TName, Converter={StaticResource TN2V}}" />
+                                <TextBlock Text="{Binding TName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+        </DockPanel>
+
+        <!-- Selected Template Information diag:PresentationTraceSources.TraceLevel=High -->
+        <DockPanel LastChildFill="True" Grid.Column="1" Grid.Row="0" DataContext="{Binding ElementName=TemplateList, Path=SelectedItem, Mode=TwoWay}">
+            <DockPanel.Resources>
+                <CollectionViewSource x:Key="styleViewSource" Source="{Binding Savedtemplate_StyleItems}"/>
+            </DockPanel.Resources>
+            <DockPanel LastChildFill="True" Margin="2,15,0,0" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+                <TextBlock DockPanel.Dock="Top" Text="{lex:Loc Key=TEMPLATEWIN_TemplatesComment}" />
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                    <CheckBox x:Name="caseCheckBox" IsChecked="{Binding Path=IgnoreCase, Mode=TwoWay}"
+                              Content="{lex:Loc Key=TEMPLATEWIN_IgnoreCase}"/>
+                    <TextBlock Margin="100,0,2,0" Text="{lex:Loc Key=TEMPLATEWIN_StyleItems}" /> 
+                    <TextBlock Text="{Binding ElementName=StyleItemList, Path=Items.Count}" />
+                </StackPanel>
+                <TextBox x:Name="commentTextBox" TextWrapping="Wrap" Margin="0,2,4,2" Height="50" 
+                         MinWidth="200" HorizontalAlignment="Stretch"
+                         Text="{Binding Path=Comment, Mode=TwoWay}"/>
+            </DockPanel>
+            
+            <Border Margin="2" BorderThickness="2" BorderBrush="Black">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="StyleItemList" ItemsSource="{Binding StyleItems_StyleData, Source={StaticResource styleViewSource}}" 
+                              Background="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding Path=DeleteStyle}" IsEnabled="False" />
+                                        <TextBlock Text="{Binding Path=OldStyle}" />
+                                        <TextBlock Text="--->" />
+                                        <TextBlock Text="{Binding Path=NewStyle}" />
+                                    </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </DockPanel>
+
+        <StackPanel Margin="2,0,20,2" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <Button x:Name="okButton" Margin="2,0,0,0" Width="50" Click="okButton_Click" IsEnabled="False"
+                    Content="{lex:Loc Key=SaveButton}"/>
+            <Button IsCancel="True" Margin="2,0,0,0" Width="50" Click="Button_Click"
+                    Content="{lex:Loc Key=CancelButton}" />
+        </StackPanel>
+    </Grid>
+</Window>

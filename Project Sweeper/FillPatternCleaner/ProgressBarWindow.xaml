@@ -1,0 +1,17 @@
+﻿<Window x:Class="PKHL.ProjectSweeper.FillPatternCleaner.ProgressBarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Processing families" Height="55" Width="300" Topmost="True" ResizeMode="NoResize"  
+        WindowStartupLocation="CenterOwner" WindowStyle="None" BorderThickness="2" BorderBrush="Black" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" LastChildFill="True">
+                <Button DockPanel.Dock="Right" Margin="0" Name="CancelButton" Content="Cancel" Width="75" Height="25" VerticalAlignment="Center" Click="Button_Click" />
+                <TextBlock x:Name="_message" Text="Processing families" Margin="5,0" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+            </DockPanel>
+            <ProgressBar Grid.Row="1" x:Name="_bar" Height="25" Width="300" />
+        </Grid>
+</Window>

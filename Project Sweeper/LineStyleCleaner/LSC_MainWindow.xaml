@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="PKHL.ProjectSweeper.LineStyleCleaner.MainWindow" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PKHL.ProjectSweeper.LineStyleCleaner"
+	xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+	xmlns:FCC="clr-namespace:pkhCommon.WPF.FilterControlComponent;assembly=pkhCommon"
+	xmlns:WPF="clr-namespace:pkhCommon.WPF.Converters;assembly=pkhCommon"
+	xmlns:LPV="clr-namespace:PKHL.ProjectSweeper.LinePatternViewer"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="fr"
+    lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+	Title="{lex:Loc Key=LSC_Title_MainWindow}"
+	MinWidth="800" MinHeight="450" MaxHeight="800" MaxWidth="{Binding SystemParameters.PrimaryScreenWidth}"
+    Width="800" Height="450" 
+	Loaded="Window_Loaded" WindowStyle="ToolWindow" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <CollectionViewSource
+						x:Key="theDataView"
+					    Filter="theDataView_Filter"
+						Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=TheCollection}">
+                        <CollectionViewSource.SortDescriptions>
+                            <scm:SortDescription PropertyName="StyleName" Direction="Ascending" />
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                </ResourceDictionary>
+
+                <ResourceDictionary Source="pack://application:,,,/pkhCommon;component/FilterControlComponent/FilterControl.generic.xaml" />
+                <ResourceDictionary Source="../ComboBoxFlatStyle.xaml"/>
+                <ResourceDictionary>
+                    <WPF:BoolToVisibilityConverter x:Key="B2V"/>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <WPF:IntegerToBoolConverter x:Key="I2B"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="*" />
+            <RowDefinition
+				Height="125" />
+        </Grid.RowDefinitions>
+
+        <ListView Name="theLeftList" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+			Grid.Row="0" MinWidth="200" ItemsSource="{Binding Source={StaticResource theDataView}}">
+
+            <ListView.Resources>
+                <CollectionViewSource
+					x:Key="theComboBoxDataView" Filter="ComboBoxDataView_Filter"
+					Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=TheCollection}">
+                    <CollectionViewSource.SortDescriptions>
+                        <scm:SortDescription
+							PropertyName="StyleName"
+							Direction="Ascending" />
+                    </CollectionViewSource.SortDescriptions>
+                </CollectionViewSource>
+
+                <WPF:IntegerComparer x:Key="ID_Comparer"/>
+                <local:LineStyleDefinition x:Key="deleteItem" StyleName="{lex:Loc Key=LSC_DeleteLines}" ItsId="-1"/>
+            </ListView.Resources>
+
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem IsHitTestVisible="False">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{lex:Loc Key=DefaultMenuitem}" Margin="0,0,5,0"/>
+                                <TextBlock x:Name="MI_DefaultName" Text="Default:" />
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="{lex:Loc Key=ResetStyleMenuitem}" x:Name="MI_resetStyle" Click="MI_resetStyle_Click" />
+                    <MenuItem Header="{lex:Loc Key=SetDefaultStyleMenuitem}" x:Name="MI_setDefaultStyle" Click="MI_setDefaultStyle_Click" />
+                    <MenuItem Header="{lex:Loc Key=LSC_Default2DeleteMenuitem}" x:Name="MI_Reset" Click="MI_Reset_Click"/>
+                    <Separator />
+                    <!-- These menu items are localized by Revit in the Loaded event handler -->
+                    <MenuItem Header="Lines" x:Name="MI_Lines" Click="MI_lineClick_Click" Loaded="menuItem_Loaded"/>
+                    <MenuItem Header="Thin Line" x:Name="MI_Thin" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="Medium Line" x:Name="MI_Medium" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="Wide Line" x:Name="MI_Wide" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="&lt; Demolished &gt;" x:Name="MI_Demolished" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="&lt; Hidden &gt;" x:Name="MI_Hidden" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="&lt; Overhead &gt;" x:Name="MI_Overhead" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="&lt; Beyond &gt;" x:Name="MI_Beyond" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="&lt; Centerline &gt;" x:Name="MI_Centerline" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                    <MenuItem Header="Hidden Lines" x:Name="MI_HiddenLines" Click="MI_lineClick_Click" Loaded="menuItem_Loaded" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+
+            <ListView.Style>
+                <Style TargetType="{x:Type ListView}">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF64CF3C"/>
+                    </Style.Resources>
+                </Style>
+            </ListView.Style>
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel
+						Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Name="DeleteCheckBox" VerticalAlignment="Center" IsEnabled="{Binding IsDeleteable}" IsChecked="{Binding StyleToBeDeleted}"
+							Checked="DeleteCheckBox_Checked" Unchecked="DeleteCheckBox_Checked" ToolTip="{lex:Loc Key=DeleteCheckboxTip}"/>
+                        <TextBox Text="{Binding StyleName}" Margin="5,0,0,0" Background="Transparent" VerticalAlignment="Center" IsHitTestVisible="False" BorderThickness="0" />
+                        <TextBlock Text="--->" VerticalAlignment="Center" IsHitTestVisible="False" FontWeight="Bold" Foreground="Red">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding StyleToBeConverted}" Value="False" />
+                                                <Condition Binding="{Binding StyleToBeDeleted}" Value="False" />
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </MultiDataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <ComboBox Width="120" Style="{StaticResource ComboBoxFlatStyle}" SelectedItem="{Binding NewStyle, Mode=OneWay}" DisplayMemberPath="StyleName"
+                            SelectionChanged="ComboBox_SelectionChanged" ToolTip="{lex:Loc Key=LSC_StyleCombobox}">
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ComboBoxItem}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ItsId}" Value="-1">
+                                            <Setter Property="Background" Value="Salmon"/>
+                                        </DataTrigger>
+                                        <DataTrigger Value="True">
+                                            <DataTrigger.Binding>
+                                                <MultiBinding Converter="{StaticResource ID_Comparer}">
+                                                    <Binding RelativeSource="{RelativeSource self}" Path ="DataContext.ItsId" />
+                                                    <Binding RelativeSource="{RelativeSource AncestorType={x:Type ListViewItem}}" Path="DataContext.ItsId" />
+                                                </MultiBinding>
+                                            </DataTrigger.Binding>
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+                            <ComboBox.ItemsSource>
+                                <CompositeCollection>
+                                    <StaticResourceExtension ResourceKey="deleteItem"/>
+                                    <CollectionContainer Collection="{Binding Source={StaticResource theComboBoxDataView}}" />
+                                </CompositeCollection>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="1" DataContext="{Binding ElementName=theLeftList, Path=SelectedItem}">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,0" MappingMode="RelativeToBoundingBox" StartPoint="0.5,1">
+                                <GradientStop Color="#FF64CF3C" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Width="Auto" Orientation="Vertical">
+                <StackPanel.Resources>
+                    <Style x:Key="GraphicColourBorder" TargetType="Border">
+                        <Setter Property="Background" >
+                            <Setter.Value>
+                                <SolidColorBrush Color="{Binding StyleColour}" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Width" Value="64" />
+                        <Setter Property="Height" Value="9" />
+                    </Style>
+
+                    <Style x:Key="ExtendedDataTextBlockStyle" TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontSize" Value="9" />
+                        <Setter Property="Margin" Value="2,0,10,0" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Margin="5,0,0,0" Text="{lex:Loc Key=TXT_SelectedStyle}"/>
+                <Grid Margin="10,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=TXT_Colour}" />
+                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=TXT_Weight}"  />
+                    <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=LSC_Pattern}"   />
+                    <LPV:LinePatternViewerControlWpf LinePattern="{Binding thePattern}" ToolTip="{Binding StylePattern, Mode=OneWay}" 
+                                                     Background="White" Foreground="Black" Width="2in" Height="5" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Column="0" Grid.Row="4" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=LSC_ModelLines}"   />
+                    <TextBlock Grid.Column="0" Grid.Row="5">
+                        <Hyperlink Click="listviews_button_Click" IsEnabled="{Binding DetailLinesUsingStyle, Converter={StaticResource I2B}}">
+                            <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=LSC_DetailLines}"  />
+                        </Hyperlink>
+                    </TextBlock>
+					
+                    <Border Grid.Column="1" Grid.Row="0" Style="{DynamicResource GraphicColourBorder}" Margin="2,0,10,0"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding StyleWeight, Mode=OneWay}" />
+                    <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding StylePattern, Mode=OneWay}" />
+                    <TextBlock Grid.Column="1" Grid.Row="4" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding ModelLinesUsingStyle, Mode=OneWay}" />
+                    <TextBlock Grid.Column="1" Grid.Row="5" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding DetailLinesUsingStyle, Mode=OneWay}" />
+                </Grid>
+            </StackPanel>
+
+            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2,0,0,0"
+                    Visibility="{Binding ElementName=theLeftList, Path=SelectedItem.StyleToBeConverted, Converter={StaticResource B2V}}">
+                <StackPanel Width="Auto" Orientation="Vertical" DataContext="{Binding Path=NewStyle}">
+                    <StackPanel.Resources>
+                        <Style x:Key="GraphicColourBorder" TargetType="Border">
+                            <Setter Property="Background" >
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{Binding StyleColour}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Width" Value="64" />
+                            <Setter Property="Height" Value="9" />
+                        </Style>
+
+                        <Style x:Key="ExtendedDataTextBlockStyle" TargetType="{x:Type TextBlock}">
+                            <Setter Property="FontSize" Value="9" />
+                            <Setter Property="Margin" Value="2,0,10,0" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock Margin="5,0,0,0" Text="{lex:Loc Key=TXT_NewStyle}"/>
+                    <Grid Margin="10,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=TXT_Colour}" />
+                        <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=TXT_Weight}"  />
+                        <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=LSC_Pattern}"/>
+                        <LPV:LinePatternViewerControlWpf LinePattern="{Binding thePattern}" ToolTip="{Binding StylePattern, Mode=OneWay}" 
+                                                     Background="White" Foreground="Black" Width="2in" Height="5" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+                        <Border Grid.Column="1" Grid.Row="0" Style="{DynamicResource GraphicColourBorder}" Margin="2,0,10,0"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding StyleWeight, Mode=OneWay}" />
+                        <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding StylePattern, Mode=OneWay}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" Grid.Column="2" Grid.Row="0">
+                <Border BorderThickness="1" Margin="2" BorderBrush="DarkGray" Padding="2" CornerRadius="5">
+                    <StackPanel>
+                        <FCC:FilterControl Name="FilterBox" Height="25" Header="{lex:Loc Key=FilterDotDotDot}" Margin="0,0,0,5"
+                                   TargetControl="{Binding ElementName=theLeftList}" FilterTextBindingPath="StyleName"/>
+                        <WrapPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                            <Button Margin="0,0,5,2" HorizontalAlignment="Stretch" Content="{lex:Loc Key=PurgeUnusedButton}" Name="PurgeButton" Click="PurgeButton_Click"/>
+                            <Button HorizontalAlignment="Stretch" Content="{lex:Loc Key=DeleteAllButton}" Name="DeleteAllButton" Click="DeleteAllButton_Click" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                        <Button Width="75" Margin="2" HorizontalAlignment="Stretch" Content="{lex:Loc}" Name="ResetAllButton" Click="ResetAllButton_Click" />
+                        <Button Width="50" Margin="2,2,0,2" HorizontalAlignment="Stretch" Content="{lex:Loc}" Name="SaveButton" Click="SaveButton_Click" />
+                        <Button Width="50" Margin="2" HorizontalAlignment="Stretch" Content="{lex:Loc}" Name="LoadButton" Click="LoadButton_Click" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                        <Button Name="OkButton" Margin="2" HorizontalAlignment="Stretch" Content="{lex:Loc}"					 
+						Width="75" Click="OkButton_Click" />
+                        <Button Name="CancelButton" Width="50" Margin="2" HorizontalAlignment="Stretch"
+						Content="{lex:Loc}" Click="CancelButton_Click" />
+                        <Button Name="HelpButton" Width="50" Margin="2" HorizontalAlignment="Stretch" Content="{lex:Loc}" Click="HelpButton_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>

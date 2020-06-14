@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="PKHL.ProjectSweeper.TextStyleCleaner.CompareWindow" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:PKHL.ProjectSweeper.TextStyleCleaner"
+	xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="fr"
+    lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
+    lex:ResxLocalizationProvider.DefaultDictionary="Language"
+	Title="{lex:Loc Key=TSCC_Title_Window}"	Width="800" Height="300"
+	SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <CollectionViewSource x:Key="theDataView"
+						Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=TheCollection}">
+                    </CollectionViewSource>
+                </ResourceDictionary>
+
+                <ResourceDictionary>
+                    <Style x:Key="ExtendedDataTextBlockStyle" TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontSize" Value="12" />
+                    </Style>
+
+                    <Style x:Key="GraphicColourBorder" TargetType="Border">
+                        <Setter Property="Background" >
+                            <Setter.Value>
+                                <SolidColorBrush Color="{Binding GraphicColour}" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Width" Value="64" />
+                        <Setter Property="Height" Value="12" />
+                    </Style>
+
+                    <local:VisibleConverter x:Key="visibleConverter"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="*" />
+            <RowDefinition
+				Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="theListView" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="White"
+                 ItemsSource="{Binding Source={StaticResource theDataView}}" IsHitTestVisible="False">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="2,0" Margin="1,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Text="{Binding StyleName}" FontFamily="{Binding TextFontName}"
+                                       FontSize="16" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <Grid Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=TSC_GraphicsTxt}" FontWeight="Bold" Margin="2,0,10,0" />
+                                <TextBlock Grid.Column="0" Grid.Row="1"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="LINE_COLOR" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="2"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="LINE_PEN" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="3"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_BACKGROUND" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="4"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_BOX_VISIBILITY" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="5"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="LEADER_OFFSET_SHEET" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="6"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="LEADER_ARROWHEAD" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+
+                                <Border Grid.Column="1" Grid.Row="1"  Style="{DynamicResource GraphicColourBorder}" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="1" Grid.Row="2"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding GraphicWeight, Mode=OneWay}" />
+                                <TextBlock Grid.Column="1" Grid.Row="3"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding GraphicBackground, Mode=OneWay}" />
+                                <TextBlock Grid.Column="1" Grid.Row="4"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding GraphicShowBorder, Mode=OneWay}" />
+                                <TextBlock Grid.Column="1" Grid.Row="5"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding GraphicLeaderBorderOffset, Mode=OneWay}" />
+                                <TextBlock Grid.Column="1" Grid.Row="6"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding GraphicLeaderArrowhead, Mode=OneWay}" />
+
+                                <TextBlock Grid.Column="0" Grid.Row="7"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=TSC_TextTxt}" FontWeight="Bold" Margin="2,10,10,0" />
+                                <TextBlock Grid.Column="0" Grid.Row="8"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_FONT" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="9"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_SIZE" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="10"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_TAB_SIZE" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="11"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="SCHEDULE_FORMAT_PARAM" Margin="2,0,10,0" Loaded="TextBlock_Loaded"/>
+                                <TextBlock Grid.Column="0" Grid.Row="12"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_WIDTH_SCALE" Margin="2,0,10,0" Loaded="TextBlock_Loaded" />
+                                <TextBlock Grid.Column="0" Grid.Row="13"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{lex:Loc Key=TXT_TimesUsed}" Margin="2,0,10,0" />
+
+                                <TextBlock Grid.Column="1" Grid.Row="8"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding TextFontName, Mode=OneWay}" />
+                                <TextBlock Grid.Column="1" Grid.Row="9"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding TextSize, Mode=OneWay}" />
+                                <TextBlock Grid.Column="1" Grid.Row="10"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding TextTabSize, Mode=OneWay}" />
+                                <StackPanel Grid.Column="1" Grid.Row="11" Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_STYLE_BOLD" FontWeight="Bold" Margin="2,0,0,0"
+						           Visibility="{Binding TextBold, Converter={StaticResource visibleConverter}, ConverterParameter=collapse, Mode=OneWay, FallbackValue=Visible}" Loaded="TextBlock_Loaded"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_STYLE_ITALIC" FontStyle="Italic" Margin="2,0,0,0"
+						           Visibility="{Binding TextItalic, Converter={StaticResource visibleConverter}, ConverterParameter=collapse, Mode=OneWay, FallbackValue=Visible}" Loaded="TextBlock_Loaded"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Text="TEXT_STYLE_UNDERLINE" Margin="2,0,0,0"
+						           Visibility="{Binding TextUnderline, Converter={StaticResource visibleConverter}, Mode=OneWay, FallbackValue=Visible}" Loaded="TextBlock_Loaded"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Grid.Row="12"  Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding TextWidthFactor, Mode=OneWay}" />
+                                <TextBlock Grid.Column="3" Grid.Row="13" Style="{StaticResource ExtendedDataTextBlockStyle}" Text="{Binding NumberOfUses, Mode=OneWay}"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" Margin="0"  />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                <Button Margin="2" HorizontalAlignment="Stretch" Content="{lex:Loc}" Width="75" Name="OkButton" Click="OkButton_Click" />
+                <Button Width="50" Margin="2" HorizontalAlignment="Stretch" Content="{lex:Loc}" Name="helpButton" Click="HelpButton_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

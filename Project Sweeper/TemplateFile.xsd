@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PSTemplates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="App">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Savedtemplate">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="StyleItems">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="StyleData">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="OldStyle" type="xs:string" />
+                                <xs:element name="NewStyle" type="xs:string" />
+                                <xs:element name="DeleteStyle" type="xs:boolean" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="TName" type="xs:string" use="required" />
+                  <xs:attribute name="IgnoreCase" type="xs:boolean" use="required" />
+                  <xs:attribute name="Comment" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="AName" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

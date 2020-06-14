@@ -1,0 +1,30 @@
+
+Thin Lines : -2000042
+Medium Lines : -2000043
+Wide Lines : -2000044
+Lines : -2000078 OST_GenericLines (OK)
+<Demolished> : -2000285
+<Hidden> : -2000286
+<Overhead> : -2000284
+<Beyond> : -2000287
+<Centerline> : -2000288
+Hidden Lines : -2009504
+
+<Room Separation> : -2000066
+<Space Separation> : -2000831
+Insulation Batting Lines : -2000077
+<Sketch> : -2000045
+<Area Boundary> : -2000079
+Landing Center> : -2000070
+Run> : -2000069
+Boundary> : -2000067
+Riser> : -2000068
+Stair Path> : -2000945
+Railing Rail Path Lines : -2000953
+Railing Rail Path Extension Lines : -2000954
+Axis of Rotation : -2000065
+<Fabric Envelope> : -2009018
+<Fabric Sheets> : -2009019
+Lines : -2001273	OST_BasePointAxisX
+Lines : -2001274	OST_BasePointAxisY
+Lines : -2001275	OST_BasePointAxisZ

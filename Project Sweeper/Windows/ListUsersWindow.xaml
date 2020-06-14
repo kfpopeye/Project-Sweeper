@@ -1,0 +1,57 @@
+﻿<Window x:Class="PKHL.ProjectSweeper.ListUsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PKHL.ProjectSweeper"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+	    xmlns:FCC="clr-namespace:pkhCommon.WPF.FilterControlComponent;assembly=pkhCommon"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
+        lex:ResxLocalizationProvider.DefaultDictionary="Language"
+        mc:Ignorable="d"
+        
+        Title="ListUsersWindow" WindowStyle="ToolWindow" Topmost="True" WindowStartupLocation="CenterOwner" 
+        Loaded="Window_Loaded" SizeToContent="WidthAndHeight" MinWidth="200" MinHeight="300">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <CollectionViewSource x:Key="theDataView" Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=TheData}">
+                        <CollectionViewSource.SortDescriptions>
+                            <scm:SortDescription PropertyName="TypeName" Direction="Ascending" />
+                        </CollectionViewSource.SortDescriptions>
+                        <CollectionViewSource.GroupDescriptions>
+                            <PropertyGroupDescription PropertyName="Type"/>
+                        </CollectionViewSource.GroupDescriptions>
+                    </CollectionViewSource>
+                </ResourceDictionary>
+
+                <ResourceDictionary Source="pack://application:,,,/pkhCommon;component/FilterControlComponent/FilterControl.generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <DockPanel LastChildFill="True" Margin="0" Background="#FF64CF3C">
+            <FCC:FilterControl DockPanel.Dock="Top" Height="25" Margin="2,2,2,0" Header="{lex:Loc Key=FilterDotDotDot}"
+                               TargetControl="{Binding ElementName=mainListView}" FilterTextBindingPath="Name" />
+            <ListBox x:Name="mainListView" DisplayMemberPath="Name" Margin="2" MinWidth="64" Width="Auto" 
+                 ItemsSource="{Binding Source={StaticResource theDataView}}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.GroupStyle>
+                    <GroupStyle >
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Background="#FF64CF3C">
+                                    <TextBlock Text="{Binding Path=Name}" MinWidth="50"/>
+                                    <TextBlock Text="{lex:Loc Key=TXT_TimesUsed}" MinWidth="50" Margin="15,0,0,0"/>
+                                    <TextBlock Text="{Binding Path=ItemCount}" Margin="2,0" MinWidth="100"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListBox.GroupStyle>
+            </ListBox>
+        </DockPanel>
+    </Grid>
+</Window>

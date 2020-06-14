@@ -1,0 +1,165 @@
+﻿<Window x:Class="PKHL.ProjectSweeper.FillPatternCleaner.SingleElementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	    xmlns:FCC="clr-namespace:pkhCommon.WPF.FilterControlComponent;assembly=pkhCommon"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:local="clr-namespace:PKHL.ProjectSweeper.FillPatternCleaner"
+	    xmlns:FPV="clr-namespace:PKHL.ProjectSweeper.FillPatternViewer" 
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="en"
+        lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
+        lex:ResxLocalizationProvider.DefaultDictionary="Language"
+        mc:Ignorable="d"
+		
+        Title="{lex:Loc Key=Title_SingleWindow_Pattern}" Height="300" Width="612.4" WindowStartupLocation="CenterOwner" Topmost="True"
+        MaxWidth="{Binding SystemParameters.FullPrimaryScreenWidth}" MaxHeight="600" WindowStyle="ToolWindow" Loaded="Window_Loaded" Background="#FF64CF3C" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <CollectionViewSource Filter="FilterSelectedStyle" x:Key="listboxView"
+                                          Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=TheCollection}">
+                        <CollectionViewSource.SortDescriptions>
+                            <scm:SortDescription PropertyName="StyleName" Direction="Ascending" />
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                </ResourceDictionary>
+
+                <ResourceDictionary Source="pack://application:,,,/pkhCommon;component/FilterControlComponent/FilterControl.generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Border BorderThickness="1" Margin="2" BorderBrush="Black" Padding="2" IsHitTestVisible="False" CornerRadius="5">
+                    <StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <FPV:FillPatternViewer Background="White" Width="40" Height="40" UserScalar="0.5" x:Name="ssthePattern" />
+                        </Border>
+                        <StackPanel Orientation="Vertical" IsHitTestVisible="False">
+                            <TextBlock x:Name="ssStyleName" MinWidth="64" FontWeight="Bold" Padding="0,0,0,0" IsHitTestVisible="False"/>
+
+                            <StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+                                <TextBlock Text="T: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssStyleType" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock Text="PT: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssPatternType" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock Text="Ang: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssLineAngle" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+                                <TextBlock Text="LS1: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssLineSpacing1" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock Text="LS2: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssLineSpacing2" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock Text="M: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssMaterialUsing" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock Text="C: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssComponentsUsing" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock Text="R: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssRegionsUsing" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock Text="F: " FontSize="9" Padding="5,0,0,0" IsHitTestVisible="False" />
+                                <TextBlock x:Name="ssFamiliesUsing" FontSize="9" Padding="0,0,0,0" IsHitTestVisible="False" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Button  Height="24" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0" x:Name="ListUsersButton" Content="{lex:Loc}" Click="listviews_button_Click" />
+
+                <FCC:FilterControl Name="FilterBox" Height="25" MinWidth="120" Margin="5" Header="{lex:Loc Key=FilterDotDotDot}" 
+                                       TargetControl="{Binding ElementName=theListView}" FilterTextBindingPath="StyleName"/>
+                <CheckBox x:Name="cb_Delete" Content="{lex:Loc Key=DeleteSourcePatternCheckbox}" IsChecked="True" VerticalAlignment="Center" Margin="0,0,10,0" Checked="CheckBox_Checked" />
+                <Button x:Name="OkButton" Content="{lex:Loc}" Height="24" Width="60" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0" Click="OK_Button_Click"/>
+                <Button x:Name="CancelButton" Content="{lex:Loc}"  Height="24" Width="60" Margin="5,0"
+                        HorizontalAlignment="Right" VerticalAlignment="Center" Click="Cancel_Button_Click"/>
+                <Button Width="50" Height="24" Margin="5" HorizontalAlignment="Stretch" Content="{lex:Loc}" Name="HelpButton" Click="HelpButton_Click" />
+            </StackPanel>
+        </Grid>
+
+        <ListBox x:Name="theListView" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Source={StaticResource listboxView}}"
+                 SelectionChanged="theListView_SelectionChanged" MouseRightButtonUp="theListView_MouseRightButtonUp" 
+                 MouseLeftButtonUp="theListView_MouseLeftButtonUp" MouseDoubleClick="theListView_MouseDoubleClick">
+            <ListBox.Style>
+                <Style TargetType="{x:Type ListBox}">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FF64CF3C"/>
+                    </Style.Resources>
+                </Style>
+            </ListBox.Style>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, Path=Content, Mode=OneTime}"
+                            BorderThickness="1" Margin="0,2" BorderBrush="Black" Padding="2" IsHitTestVisible="False" CornerRadius="5">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ItsId}" Value="-1">
+                                        <Setter Property="Background" Value="Salmon"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Background" Value="#FF64CF3C"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+
+                        <StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <FPV:FillPatternViewer Background="White" UserScalar="0.5" Width="40" Height="40" FillPattern="{Binding thePattern}" />
+                            </Border>
+                            <StackPanel DataContext="{Binding}" Orientation="Vertical" IsHitTestVisible="False">
+                                <StackPanel.Resources>
+                                    <Style x:Key="ExtendedDataTextBlockStyle" TargetType="{x:Type TextBlock}">
+                                        <Setter Property="FontSize" Value="9" />
+                                        <Setter Property="IsHitTestVisible" Value="False"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock Text="{Binding StyleName}" MinWidth="64" FontWeight="Bold" Padding="0,0,0,0" IsHitTestVisible="False"/>
+
+                                <StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="T:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding ItsType}"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="PT:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding PatternType, Mode=OneWay}"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="Ang:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding LineAngle, Mode=OneWay}"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" IsHitTestVisible="False">
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="LS1:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding LineSpacing1, Mode=OneWay}" />
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="LS2:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding LineSpacing2, Mode=OneWay}"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="M:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding MaterialUses, Mode=OneWay}"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="C:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding ComponentUses, Mode=OneWay}"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="R:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding RegionUses, Mode=OneWay}" />
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="2,0" Text="F:"/>
+                                    <TextBlock Style="{StaticResource ExtendedDataTextBlockStyle}" Margin="0" Text="{Binding FamilyUses, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" Orientation="Horizontal" Margin="0"  />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </DockPanel>
+</Window>

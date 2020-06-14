@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PSTemplates xmlns="">
+  <App AName="TSC">
+    <Savedtemplate TName="Option1" IgnoreCase="true" Comment="sdahjfads sdafjlkhda">
+      <StyleItems>
+        <StyleData>
+          <OldStyle>Stylename1</OldStyle>
+          <NewStyle>Stylename2</NewStyle>
+          <DeleteStyle>true</DeleteStyle>
+        </StyleData>
+      </StyleItems>
+    </Savedtemplate>
+  </App>
+  <App AName="FPC">
+    <Savedtemplate TName="Option1" IgnoreCase="true" Comment="sdahjfads sdafjlkhda">
+      <StyleItems>
+        <StyleData>
+          <OldStyle>Stylename1</OldStyle>
+          <NewStyle>Stylename2</NewStyle>
+          <DeleteStyle>true</DeleteStyle>
+        </StyleData>
+        <StyleData>
+          <OldStyle>Stylename3</OldStyle>
+          <NewStyle>Stylename4</NewStyle>
+          <DeleteStyle>false</DeleteStyle>
+        </StyleData>
+        <StyleData>
+          <OldStyle>Stylename5</OldStyle>
+          <NewStyle>Stylename6</NewStyle>
+          <DeleteStyle>true</DeleteStyle>
+        </StyleData>
+        <StyleData>
+          <OldStyle>Stylename7</OldStyle>
+          <NewStyle>Stylename8</NewStyle>
+          <DeleteStyle>true</DeleteStyle>
+        </StyleData>
+        <StyleData>
+          <OldStyle>Stylename9</OldStyle>
+          <NewStyle>Stylename0</NewStyle>
+          <DeleteStyle>true</DeleteStyle>
+        </StyleData>
+      </StyleItems>
+    </Savedtemplate>
+    <Savedtemplate TName="Option2" IgnoreCase="false" Comment="5sda46 a 456sda44wdas">
+      <StyleItems>
+        <StyleData>
+          <OldStyle>Stylename2-3</OldStyle>
+          <NewStyle>Stylename2-4</NewStyle>
+          <DeleteStyle>false</DeleteStyle>
+        </StyleData>
+      </StyleItems>
+    </Savedtemplate>
+  </App>
+  <App AName="LSC">
+    <Savedtemplate TName="Option1" IgnoreCase="true" Comment="sdahjfads sdafjlkhda">
+      <StyleItems>
+        <StyleData>
+          <OldStyle>Stylename1</OldStyle>
+          <NewStyle>Stylename2</NewStyle>
+          <DeleteStyle>true</DeleteStyle>
+        </StyleData>
+      </StyleItems>
+    </Savedtemplate>
+  </App>
+</PSTemplates>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Project Sweeper ML</Name>
+    <Assembly>C:\Users\User\Documents\pkh Lineworks\Projects\Project Sweeper 2021\Project Sweeper\bin\x64\MLTI_Release\Locked\Project Sweeper.dll</Assembly>
+    <AddInId>6f5ba375-300e-4726-9568-46d1954249ff</AddInId>
+    <FullClassName>PKHL.ProjectSweeper.ProjectSweeper</FullClassName>
+    <VendorId>PKHL</VendorId>
+    <VendorDescription>pkh Lineworks, www.pkhlineworks.ca</VendorDescription>
+  </AddIn>
+</RevitAddIns>

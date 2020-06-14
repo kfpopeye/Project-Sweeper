@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project Sweeper", "Project Sweeper\Project Sweeper.csproj", "{E4213E54-E339-4502-A0A3-B0B0957E7C2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		MLTI_Debug|x64 = MLTI_Debug|x64
+		MLTI_Release|x64 = MLTI_Release|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.Debug|x64.ActiveCfg = Debug|x64
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.Debug|x64.Build.0 = Debug|x64
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.MLTI_Debug|x64.ActiveCfg = MLTI_Debug|x64
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.MLTI_Debug|x64.Build.0 = MLTI_Debug|x64
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.MLTI_Release|x64.ActiveCfg = MLTI_Release|x64
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.MLTI_Release|x64.Build.0 = MLTI_Release|x64
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.Release|x64.ActiveCfg = Release|x64
+		{E4213E54-E339-4502-A0A3-B0B0957E7C2B}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {345EC9D2-C2DE-4ED4-B7BC-0D346A8AC228}
+	EndGlobalSection
+EndGlobal
